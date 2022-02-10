@@ -1,3 +1,6 @@
+#ifndef UZYTKOWNIcy_H
+#define UZYTKOWNIcy_H
+
 #include <iostream>
 
 using namespace std;
@@ -16,3 +19,5 @@ public:
     string pobierzLogin();
     string pobierzHaslo(); //gettery
 };
+
+#endif
