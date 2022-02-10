@@ -1,7 +1,6 @@
 #include <iostream>
 #include "Uzytkownicy.h"
 
-
 using namespace std;
 
 void Uzytkownik::ustawId(int noweId){
