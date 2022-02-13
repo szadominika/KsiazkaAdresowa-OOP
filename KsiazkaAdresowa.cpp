@@ -3,11 +3,11 @@
 
 using namespace std;
 
-KsiazkaAdresowa::KsiazkaAdresowa() {
+/*KsiazkaAdresowa::KsiazkaAdresowa() {
 
-uzytkownikMenedzer.wczytajUzytkownikowZPliku();
 
-}
+
+}*/
 
 
 void KsiazkaAdresowa::rejestracjaUzytkownika() {
