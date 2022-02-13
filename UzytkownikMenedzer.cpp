@@ -68,5 +68,5 @@ void UzytkownikMenedzer::wypiszWszystkichUzytkownikow() {
 
 void UzytkownikMenedzer::wczytajUzytkownikowZPliku() {
 
-    plikZUzytkownikami.wczytajUzytkownikowZPliku(uzytkownicy);
+    uzytkownicy = plikZUzytkownikami.wczytajUzytkownikowZPliku();
 }
