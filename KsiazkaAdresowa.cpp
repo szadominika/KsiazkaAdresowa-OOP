@@ -3,16 +3,28 @@
 
 using namespace std;
 
-/*KsiazkaAdresowa::KsiazkaAdresowa() {
-
-
-
-}*/
-
-
 void KsiazkaAdresowa::rejestracjaUzytkownika() {
 
     uzytkownikMenedzer.rejestracjaUzytkownika();
+
+}
+
+int KsiazkaAdresowa::logowanieUzytkownika() {
+
+     uzytkownikMenedzer.logowanieUzytkownika();
+
+}
+
+
+int KsiazkaAdresowa::wylogowanieUzytkownika() {
+
+    uzytkownikMenedzer.wylogowanieUzytkownika();
+
+}
+
+void KsiazkaAdresowa::zmianaHaslaZalogowanegoUzytkownika() {
+
+    uzytkownikMenedzer.zmianaHaslaZalogowanegoUzytkownika();
 
 }
 
@@ -23,3 +35,8 @@ void KsiazkaAdresowa::wypiszWszystkichUzytkownikow () {
 }
 
 
+/*int KsiazkaAdresowa::dodajAdresata() {
+
+   adresatMenedzer.dodajAdresata();
+
+}*/

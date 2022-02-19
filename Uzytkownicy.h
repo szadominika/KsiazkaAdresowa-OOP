@@ -18,6 +18,9 @@ public:
     int pobierzId();
     string pobierzLogin();
     string pobierzHaslo(); //gettery
+
+
+
 };
 
 #endif
