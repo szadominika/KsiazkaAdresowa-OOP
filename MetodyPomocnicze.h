@@ -2,6 +2,10 @@
 #define METODYPOMOCNICZE_H
 
 #include <iostream>
+#include <vector>
+#include <windows.h>
+#include <fstream>
+#include <cstdlib>
 
 using namespace std;
 
@@ -11,6 +15,9 @@ public:
 
     static string wczytajLinie();
     string konwerjsaIntNaString(int liczba);
+    string zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst);
+    string pobierzLiczbe(string tekst, int pozycjaZnaku);
+    int konwersjaStringNaInt(string liczba);
 };
 
 #endif
