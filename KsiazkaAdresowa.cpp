@@ -35,8 +35,14 @@ void KsiazkaAdresowa::wypiszWszystkichUzytkownikow () {
 }
 
 
-/*int KsiazkaAdresowa::dodajAdresata() {
+int KsiazkaAdresowa::dodajAdresata() {
 
-   adresatMenedzer.dodajAdresata();
+   uzytkownikMenedzer.dodajAdresata();
 
-}*/
+}
+
+ void KsiazkaAdresowa::wypiszWszystkichAdresatow(){
+
+ uzytkownikMenedzer.wypiszWszystkichAdresatow();
+
+ }

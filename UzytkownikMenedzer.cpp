@@ -138,4 +138,24 @@ return idZalogowanegoUzytkownika;
 
 }
 
+int UzytkownikMenedzer::dodajAdresata() {
 
+    idOstatniegoAdresata = adresatMenedzer.dodajAdresata(idZalogowanegoUzytkownika,idOstatniegoAdresata);
+
+}
+
+
+void UzytkownikMenedzer::wypiszWszystkichAdresatow()
+{
+
+
+    adresatMenedzer.wypiszWszystkichAdresatow();
+
+}
+
+void UzytkownikMenedzer::wczytajAdresatowZalogowanegoUzytkownikaZPliku()
+{
+
+    adresatMenedzer.wczytajAdresatowZalogowanegoUzytkownikaZPliku();
+
+}

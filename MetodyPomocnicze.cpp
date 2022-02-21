@@ -1,5 +1,10 @@
 #include <iostream>
 #include <sstream>
+#include <vector>
+#include <windows.h>
+#include <fstream>
+#include <algorithm>
+
 
 #include "MetodyPomocnicze.h"
 
@@ -12,7 +17,8 @@ string MetodyPomocnicze::wczytajLinie()
     return wejscie;
 }
 
-string MetodyPomocnicze::konwerjsaIntNaString(int liczba) {
+string MetodyPomocnicze::konwerjsaIntNaString(int liczba)
+{
 
     ostringstream ss;
     ss << liczba;
@@ -20,7 +26,7 @@ string MetodyPomocnicze::konwerjsaIntNaString(int liczba) {
     return str;
 }
 
-/*string MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst)
+string MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst)
 {
     if (!tekst.empty())
     {
@@ -40,4 +46,12 @@ string MetodyPomocnicze::pobierzLiczbe(string tekst, int pozycjaZnaku)
     }
     return liczba;
 }
-*/
+
+int MetodyPomocnicze::konwersjaStringNaInt(string liczba)
+{
+    int liczbaInt;
+    istringstream iss(liczba);
+    iss >> liczbaInt;
+
+    return liczbaInt;
+}
