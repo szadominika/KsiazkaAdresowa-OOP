@@ -91,11 +91,14 @@ int UzytkownikMenedzer::logowanieUzytkownika() {
 
                 if (itr -> pobierzHaslo() == haslo)
                 {
+
                     cout << endl << "Zalogowales sie." << endl << endl;
                     system("pause");
 
                     idZalogowanegoUzytkownika = itr -> pobierzId();
+
                     return idZalogowanegoUzytkownika;
+
                 }
             }
             cout << "Wprowadzono 3 razy bledne haslo." << endl;
@@ -105,6 +108,7 @@ int UzytkownikMenedzer::logowanieUzytkownika() {
         itr++;
     }
     cout << "Nie ma uzytkownika z takim loginem" << endl << endl;
+
     system("pause");
     return 0;
 }
@@ -133,29 +137,22 @@ void UzytkownikMenedzer::zmianaHaslaZalogowanegoUzytkownika()
 int UzytkownikMenedzer::wylogowanieUzytkownika() {
 
         idZalogowanegoUzytkownika = 0;
-
-return idZalogowanegoUzytkownika;
+    return idZalogowanegoUzytkownika;
 
 }
 
 int UzytkownikMenedzer::dodajAdresata() {
 
     idOstatniegoAdresata = adresatMenedzer.dodajAdresata(idZalogowanegoUzytkownika,idOstatniegoAdresata);
-
 }
-
 
 void UzytkownikMenedzer::wypiszWszystkichAdresatow()
 {
-
-
-    adresatMenedzer.wypiszWszystkichAdresatow();
-
+    adresatMenedzer.wypiszWszystkichAdresatow(idZalogowanegoUzytkownika);
 }
 
 void UzytkownikMenedzer::wczytajAdresatowZalogowanegoUzytkownikaZPliku()
 {
-
     adresatMenedzer.wczytajAdresatowZalogowanegoUzytkownikaZPliku();
-
 }
+

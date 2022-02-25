@@ -7,16 +7,17 @@
 using namespace std;
 
 
- void AdresatMenedzer::wczytajAdresatowZalogowanegoUzytkownikaZPliku() {
 
-    plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(adresaci,idZalogowanegoUzytkownika);
 
+  void AdresatMenedzer::wczytajAdresatowZalogowanegoUzytkownikaZPliku() {
+
+    ustawIdOstatniegoAdresata(plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(adresaci, idZalogowanegoUzytkownika));
+    cout << adresaci.size();
  }
 
- int AdresatMenedzer::dodajAdresata(int idZalogowanegoUzytkownika,int idOstatniegoAdresata)//(int idZalogowanegoUzytkownika)
+ int AdresatMenedzer::dodajAdresata(int idZalogowanegoUzytkownika,int idOstatniegoAdresata)
 {
     Adresat adresat;
-    idOstatniegoAdresata = 0;
 
     system("cls");
     cout << " >>> DODAWANIE NOWEGO ADRESATA <<<" << endl << endl;
@@ -32,6 +33,7 @@ Adresat AdresatMenedzer::podajDaneNowegoAdresata(int idZalogowanegoUzytkownika)
 {
     Adresat adresat;
     MetodyPomocnicze metodypomocnicze;
+
 
     adresat.ustawId( ++idOstatniegoAdresata);
     adresat.ustawIdUzytkownika(idZalogowanegoUzytkownika);
@@ -56,10 +58,10 @@ Adresat AdresatMenedzer::podajDaneNowegoAdresata(int idZalogowanegoUzytkownika)
     return adresat;
 }
 
-void AdresatMenedzer::wypiszWszystkichAdresatow() {
+void AdresatMenedzer::wypiszWszystkichAdresatow(int idZalogowanegoUzytkownika) {
 
     for (int i = 0; i < adresaci.size(); i++) {
-
+                if (adresaci[i].pobierzIdUzytkownika() == idZalogowanegoUzytkownika ){
             cout << adresaci[i].pobierzId();
             cout << adresaci[i].pobierzIdUzytkownika();
             cout << adresaci[i].pobierzImie() ;
@@ -67,5 +69,11 @@ void AdresatMenedzer::wypiszWszystkichAdresatow() {
             cout << adresaci[i].pobierzNumerTelefonu();
             cout << adresaci[i].pobierzEmail();
             cout << adresaci[i].pobierzAdres() << endl;
+        }
     }
 }
+
+ int AdresatMenedzer::ustawIdOstatniegoAdresata( int IdAdresata)
+ {
+    idOstatniegoAdresata = IdAdresata;
+ }
