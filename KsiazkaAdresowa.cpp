@@ -8,16 +8,18 @@ void KsiazkaAdresowa::rejestracjaUzytkownika() {
     uzytkownikMenedzer.rejestracjaUzytkownika();
 }
 
-int KsiazkaAdresowa::logowanieUzytkownika() {
+void KsiazkaAdresowa::wypiszWszystkichUzytkownikow () {
 
-     uzytkownikMenedzer.logowanieUzytkownika();
-     uzytkownikMenedzer.wczytajAdresatowZalogowanegoUzytkownikaZPliku();
+    uzytkownikMenedzer.wypiszWszystkichUzytkownikow();
 }
 
+void KsiazkaAdresowa::logowanieUzytkownika() {
 
-int KsiazkaAdresowa::wylogowanieUzytkownika() {
-
-    uzytkownikMenedzer.wylogowanieUzytkownika();
+     uzytkownikMenedzer.logowanieUzytkownika();
+         if(uzytkownikMenedzer.czyUzytkownikJestZalogowany())
+         {
+             adresatMenedzer = new AdresatMenedzer(NAZWA_PLIKU_Z_ADRESATAMI,uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika());
+         }
 }
 
 void KsiazkaAdresowa::zmianaHaslaZalogowanegoUzytkownika() {
@@ -25,17 +27,31 @@ void KsiazkaAdresowa::zmianaHaslaZalogowanegoUzytkownika() {
     uzytkownikMenedzer.zmianaHaslaZalogowanegoUzytkownika();
 }
 
-int KsiazkaAdresowa::dodajAdresata() {
+void KsiazkaAdresowa::wylogowanieUzytkownika() {
 
-   uzytkownikMenedzer.dodajAdresata();
+    uzytkownikMenedzer.wylogowanieUzytkownika();
+    delete adresatMenedzer;
+    adresatMenedzer = NULL;
 }
 
-void KsiazkaAdresowa::wypiszWszystkichUzytkownikow () {
 
-    uzytkownikMenedzer.wypiszWszystkichUzytkownikow();
+void KsiazkaAdresowa::dodajAdresata() {
+
+    if(uzytkownikMenedzer.czyUzytkownikJestZalogowany())
+    {
+        adresatMenedzer->dodajAdresata(); // jak dzia³amy na wska¿niku to uzywamu operatora strza³ki
+    }
+    else
+    {
+        cout << "Aby dodac adresata, nalezy najpierw sie zalogowac" << endl;
+        system("pause");
+    }
 }
 
- void KsiazkaAdresowa::wypiszWszystkichAdresatow(){
+void KsiazkaAdresowa::wyswietlWszystkichAdresatow() {
 
- uzytkownikMenedzer.wypiszWszystkichAdresatow();
- }
+    if(uzytkownikMenedzer.czyUzytkownikJestZalogowany())
+    {
+        adresatMenedzer->wyswietlWszystkichAdresatow();
+    }
+}

@@ -10,24 +10,28 @@ using namespace std;
 class KsiazkaAdresowa {
 
    UzytkownikMenedzer uzytkownikMenedzer;
-
-
+   AdresatMenedzer *adresatMenedzer; // nie mamy danych do tej klasy od razu dlatego tworzymy wskaünik
+    const string NAZWA_PLIKU_Z_ADRESATAMI;
 
 public:
-    KsiazkaAdresowa(string nazwaPlikuZUzytkownikami) : uzytkownikMenedzer(nazwaPlikuZUzytkownikami) {
-    uzytkownikMenedzer.wczytajUzytkownikowZPliku();
+    KsiazkaAdresowa(string nazwaPlikuZUzytkownikami, string nazwaPlikuZAdresatami)
+        : uzytkownikMenedzer(nazwaPlikuZUzytkownikami), NAZWA_PLIKU_Z_ADRESATAMI(nazwaPlikuZAdresatami)
+    {
+        adresatMenedzer = NULL; // jezeli pracujemy na wskazniku to ustawiamy w klasie gdzie go tworzymy NULL
+    };
+    ~KsiazkaAdresowa() // rowniez nalezy stworzyc destruktor, sprzata po danej klasie
+    {
+        delete adresatMenedzer;
+        adresatMenedzer = NULL;
     };
 
-
-
     void  rejestracjaUzytkownika();
-    int logowanieUzytkownika();
-    int wylogowanieUzytkownika();
+    void logowanieUzytkownika();
+    void wylogowanieUzytkownika();
     void zmianaHaslaZalogowanegoUzytkownika();
-    int dodajAdresata();
-
-    void wypiszWszystkichAdresatow();
-     void wypiszWszystkichUzytkownikow();
+    void dodajAdresata();
+    void wyswietlWszystkichAdresatow();
+    void wypiszWszystkichUzytkownikow();
 
 };
 
