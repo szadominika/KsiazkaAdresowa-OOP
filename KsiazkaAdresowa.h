@@ -33,7 +33,7 @@ public:
     void dodajAdresata();
     void wyswietlWszystkichAdresatow();
     void wypiszWszystkichUzytkownikow();
-    bool pobierzIdZalogowanegoUzytkownika();
+    bool czyUzytkownikJestZalogowany();
     char wybierzOpcjeZMenuGlownego();
     char wybierzOpcjeZMenuUzytkownika();
 };

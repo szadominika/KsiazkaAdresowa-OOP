@@ -56,9 +56,9 @@ void KsiazkaAdresowa::wyswietlWszystkichAdresatow() {
     }
 }
 
-bool KsiazkaAdresowa::pobierzIdZalogowanegoUzytkownika () {
+bool KsiazkaAdresowa::czyUzytkownikJestZalogowany () {
 
-    uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika();
+    uzytkownikMenedzer.czyUzytkownikJestZalogowany();
 }
 
 char KsiazkaAdresowa::wybierzOpcjeZMenuGlownego() {
