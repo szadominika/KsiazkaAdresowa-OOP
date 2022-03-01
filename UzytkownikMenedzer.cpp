@@ -66,12 +66,7 @@ void UzytkownikMenedzer::wypiszWszystkichUzytkownikow() {
     }
 }
 
-void UzytkownikMenedzer::wczytajUzytkownikowZPliku() {
-
-    uzytkownicy = plikZUzytkownikami.wczytajUzytkownikowZPliku();
-}
-
-int UzytkownikMenedzer::logowanieUzytkownika() {
+void UzytkownikMenedzer::logowanieUzytkownika() {
 
     Uzytkownik uzytkownik;
     string login = "", haslo = "";
@@ -91,26 +86,23 @@ int UzytkownikMenedzer::logowanieUzytkownika() {
 
                 if (itr -> pobierzHaslo() == haslo)
                 {
-
+                    idZalogowanegoUzytkownika = itr -> pobierzId();
                     cout << endl << "Zalogowales sie." << endl << endl;
                     system("pause");
-
-                    idZalogowanegoUzytkownika = itr -> pobierzId();
-
-                    return idZalogowanegoUzytkownika;
+                    return;
 
                 }
             }
             cout << "Wprowadzono 3 razy bledne haslo." << endl;
             system("pause");
-            return 0;
+            return;
         }
         itr++;
     }
     cout << "Nie ma uzytkownika z takim loginem" << endl << endl;
 
     system("pause");
-    return 0;
+    return ;
 }
 
 void UzytkownikMenedzer::zmianaHaslaZalogowanegoUzytkownika()
@@ -131,28 +123,24 @@ void UzytkownikMenedzer::zmianaHaslaZalogowanegoUzytkownika()
 
     plikZUzytkownikami.zapiszWszystkichUzytkownikowDoPliku(uzytkownicy);
 
-    }
+}
 
 
-int UzytkownikMenedzer::wylogowanieUzytkownika() {
+void UzytkownikMenedzer::wylogowanieUzytkownika() {
 
         idZalogowanegoUzytkownika = 0;
+}
+
+bool UzytkownikMenedzer::czyUzytkownikJestZalogowany() {
+
+    if(idZalogowanegoUzytkownika > 0)
+        return true;
+    else
+        return false;
+}
+
+int UzytkownikMenedzer::pobierzIdZalogowanegoUzytkownika() {
+
     return idZalogowanegoUzytkownika;
-
-}
-
-int UzytkownikMenedzer::dodajAdresata() {
-
-    idOstatniegoAdresata = adresatMenedzer.dodajAdresata(idZalogowanegoUzytkownika,idOstatniegoAdresata);
-}
-
-void UzytkownikMenedzer::wypiszWszystkichAdresatow()
-{
-    adresatMenedzer.wypiszWszystkichAdresatow(idZalogowanegoUzytkownika);
-}
-
-void UzytkownikMenedzer::wczytajAdresatowZalogowanegoUzytkownikaZPliku()
-{
-    adresatMenedzer.wczytajAdresatowZalogowanegoUzytkownikaZPliku();
 }
 

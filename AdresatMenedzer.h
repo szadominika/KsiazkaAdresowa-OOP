@@ -18,23 +18,22 @@ using namespace std;
 
 class AdresatMenedzer {
 
+    const int ID_ZALOGOWANEGO_UZYTKOWNIKA;
     vector <Adresat> adresaci;
-    int idOstatniegoAdresata;
-    int idZalogowanegoUzytkownika;
-
     PlikZAdresatami plikZAdresatami;
-    Adresat podajDaneNowegoAdresata(int idZalogowanegoUzytkownika);
-
+    Adresat podajDaneNowegoAdresata();
+    void wyswietlDaneAdresata(Adresat adresat);
 
 
 public:
-    void wczytajAdresatowZalogowanegoUzytkownikaZPliku();
-    int dodajAdresata(int idZalogowanegoUzytkownika,int idOstatniegoAdresata);
-    void wypiszWszystkichAdresatow(int idZalogowanegoUzytkownika);
-    int ustawIdOstatniegoAdresata(int IdAdresata);
+    AdresatMenedzer(string nazwaPlikuZAdresatami, int idZalogowanegoUzytkownika)
+        :plikZAdresatami(nazwaPlikuZAdresatami), ID_ZALOGOWANEGO_UZYTKOWNIKA(idZalogowanegoUzytkownika)
+    {
+        adresaci = plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(ID_ZALOGOWANEGO_UZYTKOWNIKA);
+    };
 
+    void dodajAdresata();
+    void wyswietlWszystkichAdresatow();
 };
-
-
 
 #endif // ADRESATMENEDZER_H

@@ -10,15 +10,14 @@
 
 using namespace std;
 
-string MetodyPomocnicze::wczytajLinie()
-{
+string MetodyPomocnicze::wczytajLinie() {
+
     string wejscie = "";
     getline(cin, wejscie);
     return wejscie;
 }
 
-string MetodyPomocnicze::konwerjsaIntNaString(int liczba)
-{
+string MetodyPomocnicze::konwerjsaIntNaString(int liczba) {
 
     ostringstream ss;
     ss << liczba;
@@ -26,8 +25,8 @@ string MetodyPomocnicze::konwerjsaIntNaString(int liczba)
     return str;
 }
 
-string MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst)
-{
+string MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst) {
+
     if (!tekst.empty())
     {
         transform(tekst.begin(), tekst.end(), tekst.begin(), ::tolower);
@@ -36,8 +35,8 @@ string MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst
     return tekst;
 }
 
-string MetodyPomocnicze::pobierzLiczbe(string tekst, int pozycjaZnaku)
-{
+string MetodyPomocnicze::pobierzLiczbe(string tekst, int pozycjaZnaku) {
+
     string liczba = "";
     while(isdigit(tekst[pozycjaZnaku]) == true)
     {
@@ -47,8 +46,8 @@ string MetodyPomocnicze::pobierzLiczbe(string tekst, int pozycjaZnaku)
     return liczba;
 }
 
-int MetodyPomocnicze::konwersjaStringNaInt(string liczba)
-{
+int MetodyPomocnicze::konwersjaStringNaInt(string liczba) {
+
     int liczbaInt;
     istringstream iss(liczba);
     iss >> liczbaInt;
