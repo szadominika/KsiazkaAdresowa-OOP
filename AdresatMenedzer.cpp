@@ -35,26 +35,20 @@ Adresat AdresatMenedzer::podajDaneNowegoAdresata() {
     cout << "Podaj imie: ";
     imie = MetodyPomocnicze::wczytajLinie();
     imie = metodypomocnicze.zamienPierwszaLitereNaDuzaAPozostaleNaMale(imie);
-    //adresat.ustawImie(MetodyPomocnicze::wczytajLinie());
-    //adresat.ustawImie(metodypomocnicze.zamienPierwszaLitereNaDuzaAPozostaleNaMale(adresat.pobierzImie()));
+
 
     cout << "Podaj nazwisko: ";
     nazwisko = MetodyPomocnicze::wczytajLinie();
     nazwisko = metodypomocnicze.zamienPierwszaLitereNaDuzaAPozostaleNaMale(nazwisko);
-    //adresat.ustawNazwisko(MetodyPomocnicze::wczytajLinie());
-   // adresat.ustawNazwisko(metodypomocnicze.zamienPierwszaLitereNaDuzaAPozostaleNaMale(adresat.pobierzNazwisko()));
 
     cout << "Podaj numer telefonu: ";
     numerTelefonu = MetodyPomocnicze::wczytajLinie();
-    //adresat.ustawNumerTelefonu(MetodyPomocnicze::wczytajLinie());
 
     cout << "Podaj email: ";
     email = MetodyPomocnicze::wczytajLinie();
-   // adresat.ustawEmail(MetodyPomocnicze::wczytajLinie());
 
     cout << "Podaj adres: ";
     adres = MetodyPomocnicze::wczytajLinie();
-  // adresat.ustawAdres(MetodyPomocnicze::wczytajLinie());
 
     adresat.ustawImie(imie);
     adresat.ustawNazwisko(nazwisko);
@@ -65,11 +59,6 @@ Adresat AdresatMenedzer::podajDaneNowegoAdresata() {
 
     return adresat;
 }
-
-/*int AdresatMenedzer::ustawIdOstatniegoAdresata( int IdAdresata)
-{
-    idOstatniegoAdresata = IdAdresata;
-}*/
 
  void AdresatMenedzer::wyswietlWszystkichAdresatow() {
     system("cls");
@@ -99,3 +88,69 @@ void AdresatMenedzer::wyswietlDaneAdresata(Adresat adresat) {
     cout << "Email:              " << adresat.pobierzEmail() << endl;
     cout << "Adres:              " << adresat.pobierzAdres() << endl;
 }
+
+void AdresatMenedzer::wyszukajAdresatowPoImieniu () {
+
+    MetodyPomocnicze metodyPomocnicze;
+    string imiePoszukiwanegoAdresata = "";
+    int iloscAdresatow = 0;
+
+    system("cls");
+    if (!adresaci.empty()) {
+        cout << ">>> WYSZUKIWANIE ADRESATOW O IMIENIU <<<" << endl << endl;
+
+        cout << "Wyszukaj adresatow o imieniu: ";
+        imiePoszukiwanegoAdresata = MetodyPomocnicze::wczytajLinie();
+        imiePoszukiwanegoAdresata = metodyPomocnicze.zamienPierwszaLitereNaDuzaAPozostaleNaMale(imiePoszukiwanegoAdresata);
+
+        for (vector <Adresat>::iterator  itr = adresaci.begin(); itr != adresaci.end(); itr++) {
+            if (itr -> pobierzImie() == imiePoszukiwanegoAdresata) {
+                wyswietlDaneAdresata(*itr);
+                iloscAdresatow++;
+            }
+        }
+        wyswietlIloscWyszukanychAdresatow(iloscAdresatow);
+    }
+    else {
+        cout << endl << "Ksiazka adresowa jest pusta" << endl << endl;
+    }
+    cout << endl;
+    system("pause");
+}
+
+void AdresatMenedzer::wyswietlIloscWyszukanychAdresatow(int iloscAdresatow) {
+
+    if (iloscAdresatow == 0)
+        cout << endl << "W ksiazce adresowej nie ma adresatow z tymi danymi." << endl;
+    else
+        cout << endl << "Ilosc adresatow w ksiazce adresowej wynosi: " << iloscAdresatow << endl << endl;
+}
+
+ void AdresatMenedzer::wyszukajAdresatowPoNazwisku() {
+       MetodyPomocnicze metodyPomocnicze;
+
+    string nazwiskoPoszukiwanegoAdresata;
+    int iloscAdresatow = 0;
+
+    system("cls");
+    if (!adresaci.empty()) {
+        cout << ">>> WYSZUKIWANIE ADRESATOW O NAZWISKU <<<" << endl << endl;
+
+        cout << "Wyszukaj adresatow o nazwisku: ";
+        nazwiskoPoszukiwanegoAdresata = MetodyPomocnicze::wczytajLinie();
+        nazwiskoPoszukiwanegoAdresata = metodyPomocnicze.zamienPierwszaLitereNaDuzaAPozostaleNaMale(nazwiskoPoszukiwanegoAdresata);
+
+        for (vector <Adresat>::iterator itr = adresaci.begin(); itr != adresaci.end(); itr++) {
+            if (itr -> pobierzNazwisko() == nazwiskoPoszukiwanegoAdresata) {
+                wyswietlDaneAdresata(*itr);
+                iloscAdresatow++;
+            }
+        }
+         wyswietlIloscWyszukanychAdresatow(iloscAdresatow);
+    }
+    else {
+        cout << endl << "Ksiazka adresowa jest pusta." << endl << endl;
+    }
+    cout << endl;
+    system("pause");
+ }
