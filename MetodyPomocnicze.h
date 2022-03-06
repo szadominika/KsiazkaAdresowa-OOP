@@ -14,11 +14,12 @@ class MetodyPomocnicze {
 public:
 
     static string wczytajLinie();
-    string konwerjsaIntNaString(int liczba);
-    string zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst);
-    string pobierzLiczbe(string tekst, int pozycjaZnaku);
-    int konwersjaStringNaInt(string liczba);
-    char wczytajZnak();
+    static string konwerjsaIntNaString(int liczba);
+    static string zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst);
+    static string pobierzLiczbe(string tekst, int pozycjaZnaku);
+    static int konwersjaStringNaInt(string liczba);
+    static char wczytajZnak();
+    static int wczytajLiczbeCalkowita();
 };
 
 #endif

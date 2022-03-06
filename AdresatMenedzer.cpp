@@ -27,19 +27,19 @@ Adresat AdresatMenedzer::podajDaneNowegoAdresata() {
 
     Adresat adresat;
     string imie, nazwisko, numerTelefonu, email, adres;
-   MetodyPomocnicze metodypomocnicze;
+  // MetodyPomocnicze metodypomocnicze;
 
     adresat.ustawId((plikZAdresatami.pobierzIdOstatniegoAdresata() + 1));
     adresat.ustawIdUzytkownika(ID_ZALOGOWANEGO_UZYTKOWNIKA);
 
     cout << "Podaj imie: ";
     imie = MetodyPomocnicze::wczytajLinie();
-    imie = metodypomocnicze.zamienPierwszaLitereNaDuzaAPozostaleNaMale(imie);
+    imie = MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(imie);
 
 
     cout << "Podaj nazwisko: ";
     nazwisko = MetodyPomocnicze::wczytajLinie();
-    nazwisko = metodypomocnicze.zamienPierwszaLitereNaDuzaAPozostaleNaMale(nazwisko);
+    nazwisko = MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(nazwisko);
 
     cout << "Podaj numer telefonu: ";
     numerTelefonu = MetodyPomocnicze::wczytajLinie();
@@ -91,7 +91,7 @@ void AdresatMenedzer::wyswietlDaneAdresata(Adresat adresat) {
 
 void AdresatMenedzer::wyszukajAdresatowPoImieniu () {
 
-    MetodyPomocnicze metodyPomocnicze;
+    //MetodyPomocnicze metodyPomocnicze;
     string imiePoszukiwanegoAdresata = "";
     int iloscAdresatow = 0;
 
@@ -101,7 +101,7 @@ void AdresatMenedzer::wyszukajAdresatowPoImieniu () {
 
         cout << "Wyszukaj adresatow o imieniu: ";
         imiePoszukiwanegoAdresata = MetodyPomocnicze::wczytajLinie();
-        imiePoszukiwanegoAdresata = metodyPomocnicze.zamienPierwszaLitereNaDuzaAPozostaleNaMale(imiePoszukiwanegoAdresata);
+        imiePoszukiwanegoAdresata = MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(imiePoszukiwanegoAdresata);
 
         for (vector <Adresat>::iterator  itr = adresaci.begin(); itr != adresaci.end(); itr++) {
             if (itr -> pobierzImie() == imiePoszukiwanegoAdresata) {
@@ -127,7 +127,7 @@ void AdresatMenedzer::wyswietlIloscWyszukanychAdresatow(int iloscAdresatow) {
 }
 
  void AdresatMenedzer::wyszukajAdresatowPoNazwisku() {
-       MetodyPomocnicze metodyPomocnicze;
+      // MetodyPomocnicze metodyPomocnicze;
 
     string nazwiskoPoszukiwanegoAdresata;
     int iloscAdresatow = 0;
@@ -138,7 +138,7 @@ void AdresatMenedzer::wyswietlIloscWyszukanychAdresatow(int iloscAdresatow) {
 
         cout << "Wyszukaj adresatow o nazwisku: ";
         nazwiskoPoszukiwanegoAdresata = MetodyPomocnicze::wczytajLinie();
-        nazwiskoPoszukiwanegoAdresata = metodyPomocnicze.zamienPierwszaLitereNaDuzaAPozostaleNaMale(nazwiskoPoszukiwanegoAdresata);
+        nazwiskoPoszukiwanegoAdresata = MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(nazwiskoPoszukiwanegoAdresata);
 
         for (vector <Adresat>::iterator itr = adresaci.begin(); itr != adresaci.end(); itr++) {
             if (itr -> pobierzNazwisko() == nazwiskoPoszukiwanegoAdresata) {
@@ -154,3 +154,56 @@ void AdresatMenedzer::wyswietlIloscWyszukanychAdresatow(int iloscAdresatow) {
     cout << endl;
     system("pause");
  }
+
+ void AdresatMenedzer::usunAdresata() {
+    int idUsuwanegoAdresata = 0;
+    int numerLiniiUsuwanegoAdresata = 0;
+
+    system("cls");
+    cout << ">>> USUWANIE WYBRANEGO ADRESATA <<<" << endl << endl;
+    idUsuwanegoAdresata = podajIdWybranegoAdresata();
+
+    char znak;
+    bool czyIstniejeAdresat = false;
+
+    for (vector <Adresat>::iterator itr = adresaci.begin(); itr != adresaci.end(); itr++)
+    {
+        if (itr -> pobierzId() == idUsuwanegoAdresata)
+        {
+            czyIstniejeAdresat = true;
+            cout << endl << "Potwierdz naciskajac klawisz 't': ";
+            znak = MetodyPomocnicze::wczytajZnak();
+            if (znak == 't')
+            {
+            plikZAdresatami.zwrocNumerLiniiSzukanegoAdresata(idUsuwanegoAdresata);
+                adresaci.erase(itr);
+                cout << endl << endl << "Szukany adresat zostal USUNIETY" << endl << endl;
+                system("pause");
+                return;
+            }
+            else
+            {
+                cout << endl << endl << "Wybrany adresat NIE zostal usuniety" << endl << endl;
+                system("p       ause");
+                return;
+            }
+        }
+    }
+    if (czyIstniejeAdresat == false)
+    {
+        cout << endl << "Nie ma takiego adresata w ksiazce adresowej" << endl << endl;
+        system("pause");
+    }
+    return;
+}
+
+int AdresatMenedzer::podajIdWybranegoAdresata() {
+    int idWybranegoAdresata = 0;
+    cout << "Podaj numer ID Adresata: ";
+    idWybranegoAdresata  = MetodyPomocnicze::wczytajLiczbeCalkowita();
+    return idWybranegoAdresata;
+}
+
+
+
+
