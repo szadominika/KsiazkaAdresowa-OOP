@@ -24,7 +24,7 @@ class PlikZAdresatami {
     int pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
     bool czyPlikJestPusty(fstream &plikTekstowy);
     Adresat pobierzDaneAdresata(string daneAdresataOddzielonePionowymiKreskami);
-        void usunPlik(string nazwaPlikuZRozszerzeniem);
+    void usunPlik(string nazwaPlikuZRozszerzeniem);
     void zmienNazwePliku(string staraNazwa, string nowaNazwa);
 
 public:
@@ -34,9 +34,10 @@ public:
     };
 
     vector <Adresat> wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika);
-    void zwrocNumerLiniiSzukanegoAdresata(int idAdresata);
+    void usunWybranegoAdresata(int idAdresata);
     bool dopiszAdresataDoPliku(Adresat adresat);
     int pobierzIdOstatniegoAdresata();
+    void edytujWybranegoAdresataWPliku(Adresat adresat);
 };
 
 
