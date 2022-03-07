@@ -23,17 +23,26 @@ class AdresatMenedzer {
     PlikZAdresatami plikZAdresatami;
     Adresat podajDaneNowegoAdresata();
     void wyswietlDaneAdresata(Adresat adresat);
+    void wyswietlIloscWyszukanychAdresatow(int iloscAdresatow);
+    int podajIdWybranegoAdresata();
+    char wybierzOpcjeZMenuEdycja();
+    void zaktualizujDaneWybranegoAdresata(Adresat adresat, int idEdytowanegoAdresata);
+
 
 
 public:
-    AdresatMenedzer(string nazwaPlikuZAdresatami, int idZalogowanegoUzytkownika)
-        :plikZAdresatami(nazwaPlikuZAdresatami), ID_ZALOGOWANEGO_UZYTKOWNIKA(idZalogowanegoUzytkownika)
+    AdresatMenedzer(string nazwaPlikuZAdresatami,string nazwaTymczasowegoPlikuZAdresatami, int idZalogowanegoUzytkownika)
+        :plikZAdresatami(nazwaPlikuZAdresatami,nazwaTymczasowegoPlikuZAdresatami), ID_ZALOGOWANEGO_UZYTKOWNIKA(idZalogowanegoUzytkownika)
     {
         adresaci = plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(ID_ZALOGOWANEGO_UZYTKOWNIKA);
     };
 
     void dodajAdresata();
     void wyswietlWszystkichAdresatow();
+    void wyszukajAdresatowPoImieniu();
+    void wyszukajAdresatowPoNazwisku();
+    void usunAdresata();
+    void edytujAdresata();
 };
 
 #endif // ADRESATMENEDZER_H

@@ -12,11 +12,12 @@ class KsiazkaAdresowa {
 
    UzytkownikMenedzer uzytkownikMenedzer;
    AdresatMenedzer *adresatMenedzer; // nie mamy danych do tej klasy od razu dlatego tworzymy wskaünik
-    const string NAZWA_PLIKU_Z_ADRESATAMI;
+   const string NAZWA_PLIKU_Z_ADRESATAMI;
+   const string NAZWA_TYMCZASOWEGO_PLIKU_Z_ADRESATAMI;
 
 public:
-    KsiazkaAdresowa(string nazwaPlikuZUzytkownikami, string nazwaPlikuZAdresatami)
-        : uzytkownikMenedzer(nazwaPlikuZUzytkownikami), NAZWA_PLIKU_Z_ADRESATAMI(nazwaPlikuZAdresatami)
+    KsiazkaAdresowa(string nazwaPlikuZUzytkownikami, string nazwaPlikuZAdresatami, string nazwaTymczasowegoPlikuZAdresatami)
+        : uzytkownikMenedzer(nazwaPlikuZUzytkownikami), NAZWA_PLIKU_Z_ADRESATAMI(nazwaPlikuZAdresatami),NAZWA_TYMCZASOWEGO_PLIKU_Z_ADRESATAMI(nazwaTymczasowegoPlikuZAdresatami)
     {
         adresatMenedzer = NULL; // jezeli pracujemy na wskazniku to ustawiamy w klasie gdzie go tworzymy NULL
     };
@@ -36,6 +37,10 @@ public:
     bool czyUzytkownikJestZalogowany();
     char wybierzOpcjeZMenuGlownego();
     char wybierzOpcjeZMenuUzytkownika();
+    void wyszukajAdresatowPoImieniu();
+    void wyszukajAdresatowPoNazwisku();
+    void usunAdresata();
+    void edytujAdresata();
 };
 
 #endif
