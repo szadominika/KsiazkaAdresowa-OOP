@@ -99,7 +99,6 @@ bool PlikZAdresatami::dopiszAdresataDoPliku(Adresat adresat) {
         } else {
             plikTekstowy << endl << liniaZDanymiAdresata ;
         }
-        idOstatniegoAdresata++;
         plikTekstowy.close();
         return true;
     }
@@ -119,7 +118,28 @@ string PlikZAdresatami::zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKre
     return liniaZDanymiAdresata;
 }
 
+
 int PlikZAdresatami::pobierzIdOstatniegoAdresata() {
+
+    string daneJednegoAdresataOddzielonePionowymiKreskami = "";
+    string daneOstaniegoAdresataWPliku = "";
+
+    fstream plikTekstowy;
+    plikTekstowy.open(pobierzNazwePliku().c_str(), ios::in);
+
+    if (plikTekstowy.good() == true) {
+        while (getline(plikTekstowy, daneJednegoAdresataOddzielonePionowymiKreskami)) {
+            }
+        }
+        daneOstaniegoAdresataWPliku = daneJednegoAdresataOddzielonePionowymiKreskami;
+        plikTekstowy.close();
+
+
+    if(daneOstaniegoAdresataWPliku != "") {
+        idOstatniegoAdresata = pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(daneOstaniegoAdresataWPliku);
+    }
+
+
     return idOstatniegoAdresata;
 }
 
